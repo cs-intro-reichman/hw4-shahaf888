@@ -15,11 +15,12 @@ public class KeywordsDetector {
         };
         String[] sentences1 = {
             "Our product will transform the market",
-            "This blockchain-based solution will disrupt the industry"
+            "This blockchain-based solution will disrupt the industry",
+            "Use simple words without hype and leverage fluff Paradigm"
         };
         // Some keywords that typically signal bullshit contents in business presentations 
         String[] keywords = {"synergy", "disrupt", "leverage", "Paradigm", "transform"};
-        detectAndPrint(sentences, keywords);
+        detectAndPrint(sentences1, keywords);
     }
 
     // Iterates through all the sentences.
@@ -27,29 +28,36 @@ public class KeywordsDetector {
     public static void detectAndPrint(String[] sentences, String[] keywords) {
         String helper = "";
         String lower = "";
+        boolean checker = false;
         for (int i = 0; i < sentences.length; i++){
             lower = sentences[i].toLowerCase();
+            checker = false;
             helper = "";
             int j = 0;
-            while (j < lower.length()){
+            while (j < lower.length() && !checker){
                 if (lower.charAt(j) != ' ')
                 {
                     helper = helper + lower.charAt(j);
                 }
                 else{
                     for (int m = 0; m < keywords.length; m++){
-                        if (helper.equals(keywords[m])){
-                            System.out.println(helper);
+                        if (helper.equals(keywords[m].toLowerCase())){
+                            System.out.println(sentences[i]);
+                            checker = true;
+                            break;
                         }
                     }
                     helper = "";
                 }
                 j++;
             }
-            for (int m = 0; m < keywords.length; m++){
-                if(helper.equals(keywords[m])){
-                    System.out.println(helper);
+            if(!checker){
+                for (int m = 0; m < keywords.length; m++){
+                    if(helper.equals(keywords[m].toLowerCase())){
+                        System.out.println(sentences[i]);
+                    }
                 }
+
             }
 
 
