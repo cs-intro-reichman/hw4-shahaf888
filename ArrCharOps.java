@@ -40,7 +40,6 @@ public class ArrCharOps {
     /** Returns the char value at the specified index. Assume that the array is non-empty.
      */
     public static char charAt(char[] arr, int index) {
-        // Replace the following statement with your code
         if (index > arr.length){
             return ' ';
         }
@@ -51,7 +50,7 @@ public class ArrCharOps {
      *  returns true; Otherwise returns false.
      */
     public static boolean equals(char[] arr1, char[] arr2) {
-        if ( arr1.length != arr2.length){
+        if (arr1.length != arr2.length){
             return false;
         }
 
